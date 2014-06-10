@@ -1,0 +1,26 @@
+<?php
+$conn = mysql_connect("localhost", "root", "");
+
+if (!$conn) {
+    echo "Unable to connect to DB: " . mysql_error();
+    exit;
+}
+else
+{
+    echo"ok1";
+}
+
+if (!mysql_select_db("piante")) {
+    echo "Unable to select mydbname: " . mysql_error();
+    exit;
+}
+else
+{
+    echo"ok2";
+}
+$result = mysql_query("select * from user");
+while ($row = mysql_fetch_assoc($result)) {
+    echo $row["nome"];
+    echo $row["pass"];
+}
+?>
