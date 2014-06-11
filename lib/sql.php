@@ -29,7 +29,7 @@ function insert($conn, $idVase, $temp, $light, $humair, $humland) // inserire i 
 
     //Esecuzione della query
     $sql="INSERT INTO storico (IdVase, HumAir, HumLand, Light, Temp)VALUES ('$idVase', '$humair', '$humland', '$light', $temp)";
-	if (!mysql_query($sql)) {
+	if (!mysql_query($conn, $sql)) {
 	  die('Error: ' . mysql_error());
 	}
 	return true;
@@ -37,5 +37,42 @@ function insert($conn, $idVase, $temp, $light, $humair, $humland) // inserire i 
 
 }
 
-function send_data()
+function send_data($conn, $id_Vas){
+
+	//Ricavo ID Plant
+    $sql="SELECT IdPlant FROM vasi WHERE IdVase=$id_Vas";
+	$res = mysql_query($conn, $sql);
+	if(!$res){
+	  die('Error: ' . mysql_error($conn));
+	}
+	if(mysql_fetch_row($res) != 1){
+		die("Cannot find your ID Plant");
+	}
+
+	$id_plant = mysql_result($res, 0);
+
+	//Ricavo le informazioni
+
+	$sql="SELECT ALL FROM piante WHERE IdPlant = $id_plant";
+	$res = mysql_query($conn, $sql);
+	if(!$res){
+	  die('Error: ' . mysql_error($conn));
+	}
+	if(mysql_fetch_row($res) > 0){
+		die("Cannot find your your plant");
+	}
+
+
+//TODO Utilizzare JSON al posto di sta risposta schifosa
+while ($row = mysql_fetch_array($res, MYSQL_BOTH)) 
+    echo $row["HumMaxAir"] . ";" . $row["HumMaxLand"] . ";" . $row["HumMinAir"] . ";" . $row["HumMinLand"] . ";" . $row["Light"] . ";" . $row["TempMax"] . ";" . $row["TempMin"] . ";";
+
+
+}
+
+function checkConnection($conn){
+	if($conn===false)
+		return false;
+	return true;
+}
 ?>
