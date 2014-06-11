@@ -171,7 +171,95 @@ $(document).ready(function () {
       
 	  <!-- SECOND ROW OF BLOCKS -->     
       <div class="row">
+       
+
+    <!-- LIVE VISITORS BLOCK -->   
+    <div class="col-sm-3 col-lg-3">  
+      		<div class="dash-unit">
+	      		<dtitle>Live Visitors</dtitle>
+	      		<hr>
+	      		<div class="cont">
+      			<p><bold>388</bold></p>
+      			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
+	      		</div>
+      		</div>
+      	</div>
+<!-- DONUT CHART BLOCK -->
         <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+		  		<dtitle>Site Bandwidth</dtitle>
+		  		<hr>
+	        	<div id="load"></div>
+	        	<h2>45%</h2>
+			</div>
+        </div>
+
+      <!-- DONUT CHART BLOCK -->
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+		  		<dtitle>Disk Space</dtitle>
+		  		<hr>
+	        	<div id="space"></div>
+	        	<h2>65%</h2>
+			</div>
+        </div>
+        <!-- LIVE VISITORS BLOCK -->   
+    <div class="col-sm-3 col-lg-3">  
+      		<div class="dash-unit">
+	      		<dtitle>Live Visitors</dtitle>
+	      		<hr>
+	      		<div class="cont">
+      			<p><bold>388</bold></p>
+      			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
+	      		</div>
+      		</div>
+      	</div>
+	  
+
+	
+        
+	  
+      </div><!-- /row -->
+     
+ 
+	  <!-- THIRD ROW OF BLOCKS -->     
+      <div class="row">
+
+      	  <!-- LAST MONTH REVENUE -->     
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+	      		<dtitle>Last Month Revenue</dtitle>
+	      		<hr>
+	      		<div class="cont">
+					<p><bold>$879</bold> | <ok>Approved</ok></p>
+					<br>
+					<p><bold>$377</bold> | Pending</p>
+					<br>
+					<p><bold>$156</bold> | <bad>Denied</bad></p>
+					<br>
+					<p><img src="assets/img/up-small.png" alt=""> 12% Compared Last Month</p>
+
+				</div>
+
+			</div>
+        </div>
+      	<!-- GRAPH CHART - lineandbars.js file -->     
+        <div class="col-sm-3 col-lg-3">
+      		<div class="dash-unit">
+      		<dtitle>Other Information</dtitle>
+      		<hr>
+			    <div class="section-graph">
+			      <div id="importantchart"></div>
+			      <br>
+			      <div class="graph-info">
+			        <i class="graph-arrow"></i>
+			        <span class="graph-info-big">634.39</span>
+			        <span class="graph-info-small">+2.18 (3.71%)</span>
+			      </div>
+			    </div>
+			</div>
+        </div>
+      	 <div class="col-sm-3 col-lg-3">
        <!-- MAIL BLOCK -->
       		<div class="dash-unit">
       		<dtitle>Inbox (1)</dtitle>
@@ -232,67 +320,6 @@ $(document).ready(function () {
 			</div>
 		</div><!-- /dash-unit -->
     </div><!-- /span3 -->
-<!-- DONUT CHART BLOCK -->
-        <div class="col-sm-3 col-lg-3">
-      		<div class="dash-unit">
-		  		<dtitle>Site Bandwidth</dtitle>
-		  		<hr>
-	        	<div id="load"></div>
-	        	<h2>45%</h2>
-			</div>
-        </div>
-
-      <!-- DONUT CHART BLOCK -->
-        <div class="col-sm-3 col-lg-3">
-      		<div class="dash-unit">
-		  		<dtitle>Disk Space</dtitle>
-		  		<hr>
-	        	<div id="space"></div>
-	        	<h2>65%</h2>
-			</div>
-        </div>
-	  <!-- GRAPH CHART - lineandbars.js file -->     
-        <div class="col-sm-3 col-lg-3">
-      		<div class="dash-unit">
-      		<dtitle>Other Information</dtitle>
-      		<hr>
-			    <div class="section-graph">
-			      <div id="importantchart"></div>
-			      <br>
-			      <div class="graph-info">
-			        <i class="graph-arrow"></i>
-			        <span class="graph-info-big">634.39</span>
-			        <span class="graph-info-small">+2.18 (3.71%)</span>
-			      </div>
-			    </div>
-			</div>
-        </div>
-
-	  <!-- LAST MONTH REVENUE -->     
-        <div class="col-sm-3 col-lg-3">
-      		<div class="dash-unit">
-	      		<dtitle>Last Month Revenue</dtitle>
-	      		<hr>
-	      		<div class="cont">
-					<p><bold>$879</bold> | <ok>Approved</ok></p>
-					<br>
-					<p><bold>$377</bold> | Pending</p>
-					<br>
-					<p><bold>$156</bold> | <bad>Denied</bad></p>
-					<br>
-					<p><img src="assets/img/up-small.png" alt=""> 12% Compared Last Month</p>
-
-				</div>
-
-			</div>
-        </div>
-        
-	  
-      </div><!-- /row -->
-     
- 
-	  <!-- THIRD ROW OF BLOCKS -->     
-      <div class="row">
       	<div class="col-sm-3 col-lg-3">
 	  
 	  <!-- BARS CHART - lineandbars.js file -->     
@@ -332,15 +359,7 @@ $(document).ready(function () {
 
       	<div class="col-sm-3 col-lg-3">
 
-	  <!-- LIVE VISITORS BLOCK -->     
-      		<div class="half-unit">
-	      		<dtitle>Live Visitors</dtitle>
-	      		<hr>
-	      		<div class="cont">
-      			<p><bold>388</bold></p>
-      			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
-	      		</div>
-      		</div>
+	  
       		
 	  <!-- PAGE VIEWS BLOCK -->     
       		<div class="half-unit">
