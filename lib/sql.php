@@ -21,11 +21,11 @@ function insert($conn, $idVase, $temp, $light, $humair, $humland) // inserire i 
     */
 
     //Protezione da SQLI
-    mysql_real_escape_string($idVase);
-    mysql_real_escape_string($temp);
-    mysql_real_escape_string($light);
-    mysql_real_escape_string($humair);
-    mysql_real_escape_string($humland);
+    $idVase = mysql_real_escape_string($idVase);
+    $temp = mysql_real_escape_string($temp);
+    $light = mysql_real_escape_string($light);
+    $humair = mysql_real_escape_string($humair);
+    $humland = mysql_real_escape_string($humland);
 
     //Esecuzione della query
     $sql="INSERT INTO storico (IdVase, HumAir, HumLand, Light, Temp)VALUES ('$idVase', '$humair', '$humland', '$light', $temp)";

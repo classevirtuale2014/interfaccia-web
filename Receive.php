@@ -14,8 +14,8 @@
 			$conn = connect();
 			if(!checkConnection($conn))
 				die("ERROR Cannot connect to database");
-			
-			send_data($conn, $_GET['id_vaso']);
+			$id_vaso = mysql_real_escape_string($_GET['id_vaso']);
+			send_data($conn, $id_vaso);
 
 
 		}else{
