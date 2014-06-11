@@ -28,7 +28,7 @@ function insert($conn, $idVase, $temp, $light, $humair, $humland) // inserire i 
     $humland = mysql_real_escape_string($humland);
 
     //Esecuzione della query
-    $sql="INSERT INTO storico (IdVase, HumAir, HumLand, Light, Temp)VALUES ('$idVase', '$humair', '$humland', '$light', $temp)";
+    $sql="INSERT INTO storico (IdVase, HumAir, HumLand, Light, Temp, UpdateTime)VALUES ('$idVase', '$humair', '$humland', '$light', $temp, $date)";
 	if (!mysql_query($conn, $sql)) {
 	  die('Error: ' . mysql_error());
 	}
@@ -40,7 +40,7 @@ function insert($conn, $idVase, $temp, $light, $humair, $humland) // inserire i 
 function send_data($conn, $id_Vas){
 
 	//Ricavo ID Plant
-    $sql="SELECT IdPlant FROM vasi WHERE IdVase=$id_Vas";
+    $sql="SELECT IdVase FROM UserVase WHERE IdPlant=$id_Vas";
 	$res = mysql_query($conn, $sql);
 	if(!$res){
 	  die('Error: ' . mysql_error($conn));
@@ -53,7 +53,7 @@ function send_data($conn, $id_Vas){
 
 	//Ricavo le informazioni
 
-	$sql="SELECT ALL FROM piante WHERE IdPlant = $id_plant";
+	$sql="SELECT ALL FROM Info_Plants WHERE IdPlant = $id_plant";
 	$res = mysql_query($conn, $sql);
 	if(!$res){
 	  die('Error: ' . mysql_error($conn));
@@ -74,5 +74,14 @@ function checkConnection($conn){
 	if($conn===false)
 		return false;
 	return true;
+}
+
+function require_name_plant($conn)
+{
+	$sql="SELECT Name FROM Info_Plants WHERE IdVase FROM  UserVase = IdPlant FROM Info_Plants";
+	$res = mysql_query($conn, $sql);
+	if(!$res){
+	  die('Error: ' . mysql_error($conn));
+	}
 }
 ?>

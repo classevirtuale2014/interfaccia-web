@@ -1,28 +1,27 @@
-piante
+Info_Plants
 
+IdPlant
+Name
 HumMaxAir
 HumMaxLand
 HumMinAir
 HumMinLand
-IdPlant
 Light
-Nome
 TempMax
 TempMin
 
-storico
+Storico
 
-DateTime
+IdVase
+UpdateTime
 HumAir
 HumLand
-IdVase
 Light
 Temp
 
+UserVase
 
-vasi
-
-IdPlant
-IdUser
 IdVase
-UpdateTime
+IdUser
+IdPlant
+DateTime
