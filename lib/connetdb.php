@@ -1,6 +1,6 @@
 <?php
 
- function connect($conn) //funzione per connettersi al db
+function connect($conn) //funzione per connettersi al db
 {
     $conn = mysql_connect("localhost", "root", "");//Si crea una connessione al database
 
