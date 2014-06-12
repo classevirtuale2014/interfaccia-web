@@ -145,17 +145,13 @@ $(document).ready(function () {
       		<div class="dash-unit">
 	      		<dtitle>Dati ultimo periodo</dtitle>
 	      		<hr>
-	      		<br>
-	      		<br>
+
 	            <div class="flexslider">
 					<ul class="slides">
-						<li><img src="assets/img/slide01.png" alt="slider"></li>
+						<li><div id="cont-history-charts" style="height:280px"></div></li>
 						<li><img src="assets/img/slide02.png" alt="slider"></li>
 					</ul>
             </div>
-				<div class="cont">
-					<p>StatCounter Information</p>
-				</div>   
 			</div>
         </div>
         
@@ -688,6 +684,7 @@ $(document).ready(function () {
 	<script type="text/javascript" src="assets/js/lineandbars.js"></script>
     
 	<script type="text/javascript" src="assets/js/dash-charts.js"></script>
+	<script type="text/javascript" src="assets/js/highstoc-charts.js"></script>
 	<script type="text/javascript" src="assets/js/gauge.js"></script>
 	
 	<!-- NOTY JAVASCRIPT -->
