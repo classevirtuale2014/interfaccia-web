@@ -1,4 +1,9 @@
 ﻿/*** First Chart in Dashboard page ***/
+<?php
+	require("../../../lib/graph.php");
+	$humex = getCurHumEx();
+
+?>
 
 	$(document).ready(function() {
 		info = new Highcharts.Chart({
@@ -73,8 +78,8 @@
 				name: 'SiteInfo',
 				innerSize: '65%',
 				data: [
-					{ name: 'Used', y: 65.0, color: '#fa1d2d' },
-					{ name: 'Rest', y: 35.0, color: '#3d3d3d' }
+					{ name: 'Used', y: <?php echo $humex; ?>, color: '#fa1d2d' },
+					{ name: 'Rest', y: <?php 100-$humex; ?>, color: '#3d3d3d' }
 				],
 				dataLabels: {
 					enabled: false,
