@@ -142,6 +142,65 @@
 		return $light;
 	}
 
+	function getCurHumIn(){
+		$conn = connect();	//Mi connetto 
+		if(!checkConnection($conn))	//Controllo la connessione
+			return false;
+		$ris = mysql_query("SELECT max(UpdateTime), HumAir FROM storico");
+		if($ris === false){
+			echo "Unable to Get the lowest light value";
+			return false;
+		}
+		$row = mysql_fetch_row($ris);
+		$humin = $row[1];
+		mysql_close($conn);
+		return $humin;		
+	}
+	function getCurHumEx(){
+		$conn = connect();	//Mi connetto 
+		if(!checkConnection($conn))	//Controllo la connessione
+			return false;
+		$ris = mysql_query("SELECT max(UpdateTime), HumLand FROM storico");
+		if($ris === false){
+			echo "Unable to Get the lowest light value";
+			return false;
+		}
+		$row = mysql_fetch_row($ris);
+		$humex = $row[1];
+		mysql_close($conn);
+		return $humex;		
+	}
+
+	function getCurBatteryLevel(){
+		$conn = connect();	//Mi connetto 
+		if(!checkConnection($conn))	//Controllo la connessione
+			return false;
+		$ris = mysql_query("SELECT max(UpdateTime), Battery FROM storico");
+		if($ris === false){
+			echo "Unable to Get the lowest light value";
+			return false;
+		}
+		$row = mysql_fetch_row($ris);
+		$level = $row[1];
+		mysql_close($conn);
+		return $level;		
+	}
+
+	function getWaterLever(){
+		$conn = connect();	//Mi connetto 
+		if(!checkConnection($conn))	//Controllo la connessione
+			return false;
+		$ris = mysql_query("SELECT max(UpdateTime), WaterLever FROM storico");
+		if($ris === false){
+			echo "Unable to Get the lowest light value";
+			return false;
+		}
+		$row = mysql_fetch_row($ris);
+		$level = $row[1];
+		mysql_close($conn);
+		return $level;			
+	}
+
 	//Funzione che controlla l'ultimo aggiornamento inviato dalla pianta
 
 	function getLastUpdateTime(){

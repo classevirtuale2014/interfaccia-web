@@ -6,18 +6,15 @@ require_once("lib/sql.php");
 require_once("lib/graph.php");
 
 $temp = getCurTemp();
-
 $max_temp = getMaxTemp();
 
 
 ?>
-
-
-
 <!doctype html>
 <html><head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <meta charset="utf-8">
-    <title>BLOCKS - Bootstrap Dashboard Theme</title>
+    <title>Smart Pot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Carlos Alvarez - Alvarez.is">
@@ -28,8 +25,8 @@ $max_temp = getMaxTemp();
     <link href="assets/css/font-style.css" rel="stylesheet">
     <link href="assets/css/flexslider.css" rel="stylesheet">
     
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
+<!--Sostituita da jquerymin	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+-->
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -141,6 +138,8 @@ $(document).ready(function () {
         </div>
 
       
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
         	<!-- History all data - CAROUSEL FLEXSLIDER -->     
         <div class="col-sm-6 col-lg-6">
       		<div class="dash-unit">
@@ -149,7 +148,7 @@ $(document).ready(function () {
 
 	            <div class="flexslider">
 					<ul class="slides">
-						<li><div id="cont-history-charts" style="height:280px"></div></li>
+						<li><div id="container" ></div></li>
 						<li><img src="assets/img/slide02.png" alt="slider"></li>
 					</ul>
             </div>
@@ -173,7 +172,7 @@ $(document).ready(function () {
 	      		<dtitle>Ultimo aggiornamento</dtitle>
 	      		<hr>
 	      		<div class="cont">
-					<p><img src="assets/img/up.png" alt=""> <bold>Up</bold> | 356ms.</p>
+					<p><img src="assets/img/up.png" alt=""> <bold>Up</bold> | <?php getLastUpdateTime(); ?>ms.</p>
 				</div>
 			</div>
 
@@ -191,8 +190,8 @@ $(document).ready(function () {
 	      		<dtitle>Luce attuale</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold>388</bold></p>
-      			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
+      			<p><bold><?php getCurLight(); ?></bold></p>
+      			<p><img src="assets/img/up-small.png" alt=""> <?php getMaxLight(); ?> Max. | <img src="assets/img/down-small.png" alt=""> <?php echo getMinLight(); ?> Min.</p>
 	      		</div>
       		</div>
       	<!-- Attual Temperature BLOCK -->  
@@ -200,8 +199,8 @@ $(document).ready(function () {
 	      		<dtitle>Temperatura attuale</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold><?php echo $temp; ?></bold></p>
-      			<p><img src="assets/img/up-small.png" alt=""> <?php echo $max_temp; ?> Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
+      			<p><bold><?php getCurTemp(); ?></bold></p>
+      			<p><img src="assets/img/up-small.png" alt=""> <?php echo getMaxTemp(); ?> Max. | <img src="assets/img/down-small.png" alt=""> <?php echo getMinTemp(); ?> Min.</p>
 	      		</div>
       		</div>
       	</div>
@@ -211,7 +210,7 @@ $(document).ready(function () {
 		  		<dtitle>Umidità terreno</dtitle>
 		  		<hr>
 	        	<div id="load"></div>
-	        	<h2>45%</h2>
+	        	<h2><?php echo getCurHumIn();?>%</h2>
 			</div>
         </div>
 
@@ -221,7 +220,7 @@ $(document).ready(function () {
 		  		<dtitle>Umidità area</dtitle>
 		  		<hr>
 	        	<div id="space"></div>
-	        	<h2>65%</h2>
+	        	<h2><?php echo getCurHumEx(); ?>%</h2>
 			</div>
         </div>
         
@@ -231,10 +230,10 @@ $(document).ready(function () {
 	      		<dtitle>Livello batteria</dtitle>
 
 	      		<div class="cont">
-					<p><bold>13</bold> | Pending Tasks</p>
+					<p><bold><?php getCurBatteryLevel();?></bold> | Livello</p>
 				</div>
 		             <div class="progress">
-				        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60%;"><span class="sr-only">60% Complete</span>
+				        <div class="progress-bar" role="progressbar" aria-valuenow="<?php getCurBatteryLevel();?>" aria-valuemin="0" aria-valuemax="100" style="width:60%;"><span class="sr-only"><?php getCurBatteryLevel();?>% Charged</span>
 					        
 				        </div>
 				     </div>
@@ -245,7 +244,12 @@ $(document).ready(function () {
 	      		<dtitle>Livello acqua</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold>388</bold></p>
+      			<p><bold><?php 
+      				if(getCurWaterLevel() == 1)
+      					echo "Pieno";
+      				else
+      					echo "<font color=red>In Riserva</font>";
+      			?></bold></p>
 	      		</div>
       		</div>
       	</div>
@@ -694,6 +698,7 @@ $(document).ready(function () {
 	<script type="text/javascript" src="assets/js/noty/layouts/topLeft.js"></script>
 	<script type="text/javascript" src="assets/js/noty/layouts/topRight.js"></script>
 	<script type="text/javascript" src="assets/js/noty/layouts/topCenter.js"></script>
+
 	
 	<!-- You can add more layouts if you want -->
 	<script type="text/javascript" src="assets/js/noty/themes/default.js"></script>
