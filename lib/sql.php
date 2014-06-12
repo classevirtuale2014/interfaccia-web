@@ -1,14 +1,14 @@
 <?php
 require_once("config.php");
 //Funzione che effettua la connessione
-function connect($conn) //funzione per connettersi al db
+function connect() //funzione per connettersi al db
 {
-	$conn = mysql_connect("localhost", constant("DB_USER"), constant("DB_PASS"));//Si crea una connessione al database
+	$conn = mysql_connect("localhost", "root", "");//Si crea una connessione al database
 
 	if (!$conn) //Si controlla se si è effettuatoverifica connessione
 	    die("Cannot connect to the database " . mysql_error());
 
-	if (!mysql_select_db(constant("DB_NAME"))) //connessione al database piante
+	if (!mysql_select_db("loccioniserver")) //connessione al database piante
 	    die("Cannot connect to the database: " . mysql_error());
 	return $conn;
 }
