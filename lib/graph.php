@@ -7,12 +7,12 @@
 
 	//Funzioni Che si Connettono Ogni Volta
 
-	function get_CurTemp(){	//Funzione che restituisce la temperatura corrente
+	function getCurTemp(){	//Funzione che restituisce la temperatura corrente
 		$conn = connect();	//Mi connetto 
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime), temp FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime), temp FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -20,7 +20,7 @@
 
 		$row = mysql_fetch_row($ris);
 
-		$temp = $row[0];
+		$temp = $row[1];
 		mysql_close($conn);
 		return $temp;
 	}
@@ -30,7 +30,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -48,7 +48,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpUpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -66,7 +66,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -85,7 +85,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -101,7 +101,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -117,7 +117,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -133,7 +133,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(DateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;

@@ -1,3 +1,18 @@
+<?php
+
+echo "DEBUG DI PROVA";
+
+require_once("lib/sql.php");
+require_once("lib/graph.php");
+
+$temp = getCurTemp();
+
+
+
+?>
+
+
+
 <!doctype html>
 <html><head>
     <meta charset="utf-8">
@@ -188,7 +203,7 @@ $(document).ready(function () {
 	      		<dtitle>Temperatura attuale</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold>388</bold></p>
+      			<p><bold><?php echo $temp; ?></bold></p>
       			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
 	      		</div>
       		</div>
