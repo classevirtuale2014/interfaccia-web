@@ -7,6 +7,7 @@ require_once("lib/graph.php");
 
 $temp = getCurTemp();
 
+$max_temp = getMaxTemp();
 
 
 ?>
@@ -200,7 +201,7 @@ $(document).ready(function () {
 	      		<hr>
 	      		<div class="cont">
       			<p><bold><?php echo $temp; ?></bold></p>
-      			<p><img src="assets/img/up-small.png" alt=""> 412 Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
+      			<p><img src="assets/img/up-small.png" alt=""> <?php echo $max_temp; ?> Max. | <img src="assets/img/down-small.png" alt=""> 89 Min.</p>
 	      		</div>
       		</div>
       	</div>
