@@ -2,11 +2,9 @@
 
 echo "DEBUG DI PROVA";
 
-require_once("lib/sql.php");
+//require_once("lib/sql.php");
 require_once("lib/graph.php");
 
-$temp = getCurTemp();
-$max_temp = getMaxTemp();
 
 
 ?>
@@ -172,7 +170,7 @@ $(document).ready(function () {
 	      		<dtitle>Ultimo aggiornamento</dtitle>
 	      		<hr>
 	      		<div class="cont">
-					<p><img src="assets/img/up.png" alt=""> <bold>Up</bold> | <?php getLastUpdateTime(); ?>ms.</p>
+					<p><img src="assets/img/up.png" alt=""> <bold>Up</bold> | <?php echo getLastUpdateTime(); ?>ms.</p>
 				</div>
 			</div>
 
@@ -190,8 +188,8 @@ $(document).ready(function () {
 	      		<dtitle>Luce attuale</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold><?php getCurLight(); ?></bold></p>
-      			<p><img src="assets/img/up-small.png" alt=""> <?php getMaxLight(); ?> Max. | <img src="assets/img/down-small.png" alt=""> <?php echo getMinLight(); ?> Min.</p>
+      			<p><bold><?php echo getCurLight(); ?></bold></p>
+      			<p><img src="assets/img/up-small.png" alt=""> <?php echo getMaxLight(); ?> Max. | <img src="assets/img/down-small.png" alt=""> <?php echo getMinLight(); ?> Min.</p>
 	      		</div>
       		</div>
       	<!-- Attual Temperature BLOCK -->  
@@ -199,7 +197,7 @@ $(document).ready(function () {
 	      		<dtitle>Temperatura attuale</dtitle>
 	      		<hr>
 	      		<div class="cont">
-      			<p><bold><?php getCurTemp(); ?></bold></p>
+      			<p><bold><?php echo getCurTemp(); ?></bold></p>
       			<p><img src="assets/img/up-small.png" alt=""> <?php echo getMaxTemp(); ?> Max. | <img src="assets/img/down-small.png" alt=""> <?php echo getMinTemp(); ?> Min.</p>
 	      		</div>
       		</div>

@@ -48,7 +48,7 @@
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
 
-		$ris = mysql_query("SELECT max(UpUpdateTime), HumLand FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime), HumLand FROM storico");
 		if($ris === false){
 			echo "Unable to Get the lastest temp";
 			return false;
@@ -142,34 +142,6 @@
 		return $light;
 	}
 
-	function getCurHumIn(){
-		$conn = connect();	//Mi connetto 
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
-		$ris = mysql_query("SELECT max(UpdateTime), HumAir FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lowest light value";
-			return false;
-		}
-		$row = mysql_fetch_row($ris);
-		$humin = $row[1];
-		mysql_close($conn);
-		return $humin;		
-	}
-	function getCurHumEx(){
-		$conn = connect();	//Mi connetto 
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
-		$ris = mysql_query("SELECT max(UpdateTime), HumLand FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lowest light value";
-			return false;
-		}
-		$row = mysql_fetch_row($ris);
-		$humex = $row[1];
-		mysql_close($conn);
-		return $humex;		
-	}
 
 	function getCurBatteryLevel(){
 		$conn = connect();	//Mi connetto 
@@ -186,23 +158,6 @@
 		return $level;		
 	}
 
-	function getWaterLever(){
-		$conn = connect();	//Mi connetto 
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
-		$ris = mysql_query("SELECT max(UpdateTime), WaterLever FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lowest light value";
-			return false;
-		}
-		$row = mysql_fetch_row($ris);
-		$level = $row[1];
-		mysql_close($conn);
-		return $level;			
-	}
-
-	//Funzione che controlla l'ultimo aggiornamento inviato dalla pianta
-
 	function getLastUpdateTime(){
 		$conn = connect();	//Mi connetto 
 		if(!checkConnection($conn))	//Controllo la connessione
@@ -217,71 +172,23 @@
 		mysql_close($conn);
 		return $time;		
 	}
-
-	//Funzioni che sfruttano una connessione già esistente
-/*
-	function get_CurTemp($conn){	//Funzione che restituisce la temperatura corrente
+	function getCurWaterLevel(){
+		$conn = connect();	//Mi connetto 
 		if(!checkConnection($conn))	//Controllo la connessione
 			return false;
-
-		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
+		$ris = mysql_query("SELECT max(UpdateTime), WaterLever FROM storico");
 		if($ris === false){
-			echo "Unable to Get the lastest temp";
 			return false;
 		}
-
 		$row = mysql_fetch_row($ris);
-
-		$temp = $row[0];
-		return $temp;
+		$level = $row[1];
+		mysql_close($conn);
+		return $level;			
 	}
 
-	function get_CurLight($conn){	//Funzione che restituisce la temperatura corrente 
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
+	//Funzione che controlla l'ultimo aggiornamento inviato dalla pianta
 
-		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lastest temp";
-			return false;
-		}
 
-		$row = mysql_fetch_row($ris);
 
-		$temp = $row[0];
-		return $temp;
-	}
 
-	function get_CurHumIn($conn){	//Funzione che restituisce la temperatura corrente
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
-
-		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lastest temp";
-			return false;
-		}
-
-		$row = mysql_fetch_row($ris);
-
-		$temp = $row[0];
-		return $temp;
-	}
-
-	function get_CurHumEx($conn){	//Funzione che restituisce la temperatura corrente
-		if(!checkConnection($conn))	//Controllo la connessione
-			return false;
-
-		$ris = mysql_query("SELECT max(UpdateTime) FROM storico");
-		if($ris === false){
-			echo "Unable to Get the lastest temp";
-			return false;
-		}
-
-		$row = mysql_fetch_row($ris);
-
-		$temp = $row[0];
-		return $temp;
-	}
-*/
 ?>
