@@ -1,5 +1,6 @@
 <!doctype html>
 <html><head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <meta charset="utf-8">
     <title>BLOCKS - Bootstrap Dashboard Theme</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,8 +13,8 @@
     <link href="assets/css/font-style.css" rel="stylesheet">
     <link href="assets/css/flexslider.css" rel="stylesheet">
     
-	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
+<!--Sostituita da jquerymin	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+-->
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -125,6 +126,8 @@ $(document).ready(function () {
         </div>
 
       
+	<script src="http://code.highcharts.com/stock/highstock.js"></script>
+	<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
         	<!-- History all data - CAROUSEL FLEXSLIDER -->     
         <div class="col-sm-6 col-lg-6">
       		<div class="dash-unit">
@@ -133,7 +136,7 @@ $(document).ready(function () {
 
 	            <div class="flexslider">
 					<ul class="slides">
-						<li><div id="cont-history-charts" style="height:280px"></div></li>
+						<li><div id="container" ></div></li>
 						<li><img src="assets/img/slide02.png" alt="slider"></li>
 					</ul>
             </div>
@@ -678,6 +681,7 @@ $(document).ready(function () {
 	<script type="text/javascript" src="assets/js/noty/layouts/topLeft.js"></script>
 	<script type="text/javascript" src="assets/js/noty/layouts/topRight.js"></script>
 	<script type="text/javascript" src="assets/js/noty/layouts/topCenter.js"></script>
+
 	
 	<!-- You can add more layouts if you want -->
 	<script type="text/javascript" src="assets/js/noty/themes/default.js"></script>
