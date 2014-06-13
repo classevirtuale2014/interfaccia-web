@@ -1,8 +1,8 @@
 ﻿/*** First Chart in Dashboard page ***/
 <?php
-	require("../../../lib/graph.php");
+	require("/../../lib/graph.php");
 	$humex = getCurHumEx();
-
+	$humin = getCurHumIn();
 ?>
 
 	$(document).ready(function() {
@@ -34,8 +34,8 @@
 				name: 'Income',
 				innerSize: '65%',
 				data: [
-					{ name: 'load percentage', y: 45.0, color: '#b2c831' },
-					{ name: 'rest', y: 55.0, color: '#3d3d3d' }
+					{ name: 'load percentage', y: <?php echo (float)$humin; ?>, color: '#b2c831' },
+				{ name: 'rest', y: <?php echo (float)(100-$humin); ?>, color: '#3d3d3d' }
 				],
 				dataLabels: {
 					enabled: false,
@@ -79,7 +79,7 @@
 				innerSize: '65%',
 				data: [
 					{ name: 'Used', y: <?php echo $humex; ?>, color: '#fa1d2d' },
-					{ name: 'Rest', y: <?php 100-$humex; ?>, color: '#3d3d3d' }
+					{ name: 'Rest', y: <?php echo 100-$humex; ?>, color: '#3d3d3d' }
 				],
 				dataLabels: {
 					enabled: false,

@@ -1,11 +1,9 @@
 <?php
-
-echo "DEBUG DI PROVA";
-
 //require_once("lib/sql.php");
 require_once("lib/graph.php");
-
-
+	//require("../../../lib/graph.php");
+	$humex = getCurHumEx();
+	$humin = getCurHumIn();
 
 ?>
 <!doctype html>
@@ -47,6 +45,13 @@ require_once("lib/graph.php");
 	<link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
   	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 
+
+	<script type="text/javascript" src="assets/js/noty/themes/default.js"></script>
+    <script type="text/javascript" src="assets/js/dash-noty.js"></script> 
+	<script type="text/javascript" src="assets/js/highcharts.js"></script>
+	<script src="assets/js/jquery.flexslider.js" type="text/javascript"></script>
+
+
 <script type="text/javascript">
 $(document).ready(function () {
 
@@ -63,7 +68,87 @@ $(document).ready(function () {
      $("#btn-client-prev").click(function () {
       $('#clientCarousel').carousel('prev')
     });
-    
+  /*  
+	$('#humex').highcharts({
+				chart: {
+				renderTo: 'humex',
+				margin: [0, 0, 0, 0],
+				backgroundColor: null,
+                plotBackgroundColor: 'none',
+							
+			},
+			
+			title: {
+				text: null
+			},
+
+			tooltip: {
+				formatter: function() { 
+					return this.point.name +': '+ this.y +' %';
+						
+				} 	
+			},
+		    series: [
+				{
+				borderWidth: 2,
+				borderColor: '#F1F3EB',
+				shadow: false,	
+				type: 'pie',
+				name: 'Income',
+				innerSize: '65%',
+				data: [
+					{ name: 'load percentage', y: <?php echo (float)$humex; ?>, color: '#b2c831' },
+					{ name: 'rest', y: <?php echo (float)(100-$humex); ?>, color: '#3d3d3d' }
+				],
+				dataLabels: {
+					enabled: false,
+					color: '#000000',
+					connectorColor: '#000000'
+				}
+			}]
+		});
+		
+	
+	$('#humin').highcharts({
+				chart: {
+				renderTo: 'humin',
+				margin: [0, 0, 0, 0],
+				backgroundColor: null,
+                plotBackgroundColor: 'none',
+							
+			},
+			
+			title: {
+				text: null
+			},
+
+			tooltip: {
+				formatter: function() { 
+					return this.point.name +': '+ this.y +' %';
+						
+				} 	
+			},
+		    series: [
+				{
+				borderWidth: 2,
+				borderColor: '#F1F3EB',
+				shadow: false,	
+				type: 'pie',
+				name: 'Income',
+				innerSize: '65%',
+				data: [
+					{ name: 'load percentage', y: <?php echo (float)$humin; ?>, color: '#b2c831' },
+					{ name: 'rest', y: <?php echo (float)(100-$humin); ?>, color: '#3d3d3d' }
+				],
+				dataLabels: {
+					enabled: false,
+					color: '#000000',
+					connectorColor: '#000000'
+				}
+			}]
+		});
+
+*/
 });
 
  $(window).load(function(){
@@ -214,9 +299,9 @@ $(document).ready(function () {
 
       <!-- DONUT CHART:Umidity air BLOCK -->
         <div class="col-sm-3 col-lg-3">
-      		<div class="dash-unit">
+      		<div class="dash-unit" id="humex">
 		  		<dtitle>Umidità area</dtitle>
-		  		<hr>
+		  		<hr >
 	        	<div id="space"></div>
 	        	<h2><?php echo getCurHumEx(); ?>%</h2>
 			</div>
@@ -686,7 +771,7 @@ $(document).ready(function () {
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/js/lineandbars.js"></script>
     
-	<script type="text/javascript" src="assets/js/dash-charts.js"></script>
+	<script type="text/javascript" src="assets/js/dash-charts.js.php"></script>
 	<script type="text/javascript" src="assets/js/highstoc-charts.js"></script>
 	<script type="text/javascript" src="assets/js/gauge.js"></script>
 	
@@ -700,7 +785,7 @@ $(document).ready(function () {
 	
 	<!-- You can add more layouts if you want -->
 	<script type="text/javascript" src="assets/js/noty/themes/default.js"></script>
-    <!-- <script type="text/javascript" src="assets/js/dash-noty.js"></script> This is a Noty bubble when you init the theme-->
+    <script type="text/javascript" src="assets/js/dash-noty.js.php"></script> 
 	<script type="text/javascript" src="assets/js/highcharts1.js"></script>
 	<script src="assets/js/jquery.flexslider.js" type="text/javascript"></script>
 

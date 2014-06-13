@@ -1,3 +1,26 @@
+<?php
+
+	require_once("lib/sql.php");
+
+$conn = connect();
+$query = "SELECT Temp, UpdateTime
+            FROM storico limit 30";
+    $data = mysql_query($query, $conn);
+    $i=0;
+    while($row = mysql_fetch_array($data)) {
+
+    	$time = strtotime($row['UpdateTime']) * 1000;
+        $rows[$i]=array($time,(float)$row['Temp']); 
+        $rows1[$i]=array($time,(float)$row['Temp']); 
+
+        $i++;
+    }
+    mysql_close($conn);
+    //echo json_encode($rows), "\n";
+    $rows1 = json_encode($rows1);
+   //echo $rows1;
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -7,7 +30,7 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript">
 $(function() {
-	$.getJSON('/get_data.php?limit=20&var=Temp', function(data) {
+	$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
 
 		// Create the chart
 		$('#container').highcharts('StockChart', {
@@ -23,7 +46,7 @@ $(function() {
 
 			series : [{
 				name : 'AAPL Stock Price',
-				data : data,
+				data : <?php echo $rows1;?>,
 				type : 'areaspline',
 				threshold : null,
 				tooltip : {
