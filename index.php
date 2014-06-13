@@ -208,12 +208,43 @@ require_once("lib/graph.php");
 	      		<dtitle>Dati ultimo periodo</dtitle>
 	      		<hr>
 
-	            <div class="flexslider">
-					<ul class="slides">
-						<li><div id="container" ></div></li>
-						<li><img src="assets/img/slide02.png" alt="slider"></li>
-					</ul>
-            </div>
+	            <div id="carousel">
+					<div id="carousel-example-generic" class="carousel slide">
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+						<div class="item active">
+						  <div>
+						  	<p>Contenuto 1</p>
+						  </div>
+						  <div class="carousel-caption">
+						    Titolo Contenuto 1
+						  </div>
+						</div>
+						<div class="item">
+						  <div>
+						  	<div id="container_chart" style="height:250px; width: 100%; overflow-x:hidden;"></div>
+						  </div>
+						  <div class="carousel-caption">
+						    Titolo Contenuto 2
+						  </div>
+						</div>
+						<div class="item">
+						  <div>
+						  	<p>Contenuto 3</p>
+						  </div>
+						  <div class="carousel-caption">
+						    Titolo Contenuto 3
+						  </div>
+						</div>
+						</div>
+						<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+						<span class="icon-prev"></span>
+						</a>
+						<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+						<span class="icon-next"></span>
+						</a>
+					</div>
+	        	</div>
 			</div>
         </div>
         
