@@ -245,10 +245,10 @@ Highcharts.theme = {
     function createChart() {
 // Apply the theme
 Highcharts.setOptions(Highcharts.theme);
-        $('#container').highcharts('StockChart', {
+        $('#container_hum').highcharts('StockChart', {
 
             rangeSelector: {
-                inputEnabled: $('#container').width() > 480,
+                inputEnabled: $('#container_hum').width() > 480,
                 selected: 4
             },
 
@@ -279,5 +279,58 @@ Highcharts.setOptions(Highcharts.theme);
             series: seriesOptions
         });
     }
+
+
+  $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
+    Highcharts.setOptions(Highcharts.theme);
+    // Create the chart
+    $('#container_temp').highcharts('StockChart', {
+      
+
+      rangeSelector : {
+        selected : 1,
+        inputEnabled: $('#container_temp').width() > 480
+      },
+
+      title : {
+        text : 'AAPL Stock Price'
+      },
+      
+      series : [{
+        name : 'AAPL',
+        data : data,
+        tooltip: {
+          valueDecimals: 2
+        }
+      }]
+    });
+  });
+
+});
+  $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function(data) {
+    
+ Highcharts.setOptions(Highcharts.theme);
+    // Create the chart
+    $('#container_light').highcharts('StockChart', {
+     
+
+      rangeSelector : {
+        selected : 1,
+        inputEnabled: $('#container_light').width() > 480
+      },
+
+      title : {
+        text : 'AAPL Stock Price'
+      },
+      
+      series : [{
+        name : 'AAPL',
+        data : data,
+        tooltip: {
+          valueDecimals: 2
+        }
+      }]
+    });
+  });
 
 });

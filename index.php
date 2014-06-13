@@ -214,7 +214,7 @@ require_once("lib/graph.php");
 						<div class="carousel-inner">
 						<div class="item active">
 						  <div>
-						  	<p>Contenuto 1</p>
+						  	<div id="container_temp" style="height:250px; width: 100%; overflow-x:hidden;"></div>
 						  </div>
 						  <div class="carousel-caption">
 						    Titolo Contenuto 1
@@ -222,7 +222,7 @@ require_once("lib/graph.php");
 						</div>
 						<div class="item">
 						  <div>
-						  	<div id="container_chart" style="height:250px; width: 100%; overflow-x:hidden;"></div>
+						  	<div id="container_light" style="height:250px; width: 100%; overflow-x:hidden;"></div>
 						  </div>
 						  <div class="carousel-caption">
 						    Titolo Contenuto 2
@@ -230,7 +230,7 @@ require_once("lib/graph.php");
 						</div>
 						<div class="item">
 						  <div>
-						  	<p>Contenuto 3</p>
+						  	<div id="container_hum" style="height:250px; width: 100%; overflow-x:hidden;"></div>
 						  </div>
 						  <div class="carousel-caption">
 						    Titolo Contenuto 3
