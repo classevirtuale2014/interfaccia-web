@@ -1,0 +1,6 @@
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.exe.config
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.csprojResolveAssemblyReference.cache
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.exe
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.pdb
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.exe
+c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.pdb
