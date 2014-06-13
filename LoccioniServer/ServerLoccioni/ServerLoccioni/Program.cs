@@ -10,6 +10,14 @@ using MySql.Data;
 using MySql.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Threading;
+
+/*
+ * 
+ * 
+ * 
+ */
+
 
 namespace ServerLoccioni
 {
@@ -20,6 +28,7 @@ namespace ServerLoccioni
             IPAddress my_ip; //IP address of the local server
             my_ip = IPAddress.Parse("192.168.33.112");
             Socket ServerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            MySqlConnection MySQL_Connection = new MySqlConnection();
 
             try
             {
@@ -48,39 +57,109 @@ namespace ServerLoccioni
                     {
                         case 0:
                             {
+                                int ID = (int)msg[2];
                                 Console.WriteLine("Controllo della pianta associata al vaso");
-                                Console.WriteLine("ID del vaso: ");
+                                Console.WriteLine("ID del vaso: " + ID);
                                 
                                 /*
                                  * Viene effettuata la registrazione all'interno del DB
                                  * Se al vaso non corrisponde nessuna pianta ci sarà una risposta negativa
                                  */
 
-                              /*  int ID = (int)msg[2];
+                              
                                 string server = "localhost";
-                                string database = "loccioniserver";
+                                string database = "testloccioni";
                                 string uid = "root";
                                 string password = "";
                                 string connectionString;
                                 connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
-                                MySQL_Connection = new MySqlConnection(connectionString);
+                                try
+                                {
+                                    Console.WriteLine("Connessione al database...\n" + connectionString);
+                                    MySQL_Connection = new MySqlConnection(connectionString);
+                                    MySQL_Connection.Open();
+                                    Console.WriteLine("Database connesso");
+                                    string query = "SELECT IdPlant FROM uservase WHERE IdVase = " + ID.ToString();
 
-                                MySQL_Connection.Open();
+                                    Console.WriteLine("Esecuzioni query:\n***" + query + "***");
 
-                                DataSet ds = new DataSet();
+                                    MySqlCommand cmd = new MySqlCommand(query, MySQL_Connection);
+                                    MySqlDataReader MySQL_DR = cmd.ExecuteReader();
+                                    int PlantID = 0;
+                                    while (MySQL_DR.Read())
+                                    {
+                                        PlantID = Convert.ToInt32(MySQL_DR["IdPlant"]);
+                                        Console.WriteLine("ID della pianta " + PlantID.ToString());
+                                    }
 
-                                MySqlCommand cmd = MySQL_Connection.CreateCommand();
+                                    MySQL_DR.Close();
 
-                                cmd.CommandText = "SELECT IdVase FROM UserVase WHERE IdPlant=" + ID;
+                                    query = "SELECT HumMaxAir, HumMinAir, HumMaxLand, HumMinLand, Light, TempMax, TempMin FROM infoplants WHERE IdPlants = " + PlantID.ToString();
 
-                                MySqlDataAdapter MySQL_DAd = new MySqlDataAdapter(cmd);
+                                    Console.WriteLine("Esecuzioni query:\n***" + query + "***");
 
-                                MySQL_DAd.Fill(ds);
+                                    cmd.CommandText = query;
 
-                                */
+                                    MySQL_DR = cmd.ExecuteReader();
 
+                                    byte[] OutBuffer = new byte[9];
 
+                                    OutBuffer[0] = (byte)9;
+                                    OutBuffer[1] = (byte)1;
 
+                                    while (MySQL_DR.Read())
+                                    {
+                                        OutBuffer[2] = (byte)Convert.ToInt32(MySQL_DR["HumMaxAir"]);
+                                        Console.WriteLine("HumMaxAir: " + MySQL_DR["HumMaxAir"]);
+
+                                        OutBuffer[6] = (byte)Convert.ToInt32(MySQL_DR["HumMinAir"]);
+                                        Console.WriteLine("HumMinAir: " + MySQL_DR["HumMinAir"]);
+
+                                        OutBuffer[4] = (byte)Convert.ToInt32(MySQL_DR["HumMaxLand"]);
+                                        Console.WriteLine("HumMaxLand: " + MySQL_DR["HumMaxLand"]);
+
+                                        OutBuffer[8] = (byte)Convert.ToInt32(MySQL_DR["HumMinLand"]);
+                                        Console.WriteLine("HumMinLand: " + MySQL_DR["HumMinLand"]);
+
+                                        OutBuffer[5] = (byte)Convert.ToInt32(MySQL_DR["Light"]);
+                                        Console.WriteLine("Light: " + MySQL_DR["Light"]);
+
+                                        OutBuffer[3] = (byte)Convert.ToInt32(MySQL_DR["TempMax"]);
+                                        Console.WriteLine("TempMax: " + MySQL_DR["TempMax"]);
+
+                                        OutBuffer[7] = (byte)Convert.ToInt32(MySQL_DR["TempMin"]);
+                                        Console.WriteLine("TempMin: " + MySQL_DR["TempMin"]);
+                                    }
+
+                                    for (int i = 0; i < OutBuffer.Length; i++)
+                                    {
+                                        Console.WriteLine((int)OutBuffer[i]);
+                                    }
+
+                                    //Thread.Sleep(1000);
+
+                                    WorkSocket.Send(OutBuffer);
+
+                                    byte[] pp = new byte[20];
+                                    WorkSocket.Receive(pp);
+                                    for (int i = 0; i < pp.Length; i++)
+                                    {
+                                        Console.WriteLine(pp[i]);
+                                    }
+
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine("Errore nella connessione al DB: " + e.ToString());
+                                    
+                                    byte[] OutBuffer = new byte[2];
+                                    OutBuffer[0] = (byte)OutBuffer.Length;
+                                    OutBuffer[1] = (byte)0;
+
+                                    WorkSocket.Send(OutBuffer);
+                                    
+                                    MySQL_Connection.Close();
+                                }
                                 break;
                             }
                         case 1:
@@ -96,6 +175,7 @@ namespace ServerLoccioni
             {
                 Console.WriteLine("Errore nel server: " + e.ToString());
             }
+            Console.ReadKey();
         }
     }
 }

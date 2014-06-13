@@ -4,3 +4,9 @@ c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni
 c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.pdb
 c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.exe
 c:\users\oem\documents\visual studio 2012\Projects\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.pdb
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.exe.config
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.exe
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.pdb
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.exe
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\bin\Debug\ServerLoccioni.pdb
+C:\Users\oem\Documents\GitHub\interfaccia-web\LoccioniServer\ServerLoccioni\ServerLoccioni\obj\Debug\ServerLoccioni.csprojResolveAssemblyReference.cache
