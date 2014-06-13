@@ -51,23 +51,14 @@ require_once("lib/graph.php");
 	<script type="text/javascript" src="assets/js/highcharts.js"></script>
 	<script src="assets/js/jquery.flexslider.js" type="text/javascript"></script>
 
-
+<script type="text/javascript" >
+            $(document).ready(function() {        
+        		$('.carousel').carousel({
+					interval: 5000
+        		})
+            });
+</script>   
 <script type="text/javascript">
-$(document).ready(function () {
-
-    $("#btn-blog-next").click(function () {
-      $('#blogCarousel').carousel('next')
-    });
-     $("#btn-blog-prev").click(function () {
-      $('#blogCarousel').carousel('prev')
-    });
-
-     $("#btn-client-next").click(function () {
-      $('#clientCarousel').carousel('next')
-    });
-     $("#btn-client-prev").click(function () {
-      $('#clientCarousel').carousel('prev')
-    });
   /*  
 	$('#humex').highcharts({
 				chart: {
@@ -149,18 +140,6 @@ $(document).ready(function () {
 		});
 
 */
-});
-
- $(window).load(function(){
-
-    $('.flexslider').flexslider({
-        animation: "slide",
-        slideshow: true,
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-    });  
-});
 
 </script>
 
