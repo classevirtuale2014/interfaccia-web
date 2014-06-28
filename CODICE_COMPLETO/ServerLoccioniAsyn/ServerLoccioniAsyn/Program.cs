@@ -11,9 +11,6 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 /***These libraries aren't available by default, you can download them here: http://dev.mysql.com/downloads/connector/net/6.1.html ***/
 using Tweetinvi;
-using System.Net.Mail;
-
-/*** BECAUSE OF SOME ISSUES WITH THE NETWORK WE COULDN'T IMPLEMENT THE TWITTER INTERFACE BUT WE LEFT THE CODE ANYWAY. WE AREN'T SURE IF IT COULD WORK ***/
 
 namespace ServerLoccioniAsyn
 {
